@@ -26,9 +26,9 @@ func TestLoggerInContext(t *testing.T) {
 	expectedLogger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 
 	// Act
-	requestId, err := GetLoggerFromContext(NewContextWithLogger(context.Background(), expectedLogger))
+	logger, err := GetLoggerFromContext(NewContextWithLogger(context.Background(), expectedLogger))
 
 	// Assert
 	require.NoError(t, err)
-	require.Equal(t, expectedLogger, requestId)
+	require.Equal(t, expectedLogger, logger)
 }
